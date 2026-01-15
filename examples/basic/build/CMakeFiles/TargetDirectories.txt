@@ -1,0 +1,3 @@
+/home/sam/dev/cpp/rut/examples/basic/build/CMakeFiles/rut_test.dir
+/home/sam/dev/cpp/rut/examples/basic/build/CMakeFiles/edit_cache.dir
+/home/sam/dev/cpp/rut/examples/basic/build/CMakeFiles/rebuild_cache.dir
