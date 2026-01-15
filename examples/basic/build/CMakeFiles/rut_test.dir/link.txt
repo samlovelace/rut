@@ -1,1 +1,0 @@
-/usr/bin/c++ CMakeFiles/rut_test.dir/main.cpp.o -o rut_test   -L/home/sam/dev/cpp/rut/build  -Wl,-rpath,/home/sam/dev/cpp/rut/build -lrut 
