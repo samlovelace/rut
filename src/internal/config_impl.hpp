@@ -32,11 +32,39 @@ struct Value {
 };
 
 struct Config::Impl {
-    std::string message; 
+    
     Value root;
+    
     const Value* find(const std::string& path) const
     {
-        
+        const Value* current = &root; 
+
+        size_t start = 0; 
+        while(true)
+        {
+            size_t dot = path.find('.', start); 
+            std::string key = (dot == std::string::npos)
+                ? path.substr(start) 
+                : path.substr(start, dot - start); 
+
+            if(!std::holds_alternative<Object>(current->data))
+                return nullptr; 
+
+            const Object& obj = std::get<Object>(current->data); 
+
+            auto it = obj.find(key); 
+            if(it == obj.end())
+                return nullptr; 
+
+            current = it->second.get(); 
+
+            if(dot == std::string::npos)
+                break; 
+            
+            start = dot + 1; 
+        }
+
+        return current; 
     }
 };
 

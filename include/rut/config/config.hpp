@@ -18,19 +18,35 @@ public:
     bool has(const std::string& key) const;
 
     template<typename T>
-    T get(const std::string& key) const;
+    T get(const std::string& key) const
+    {
+        const void* raw = getRaw(key);
+        if (!raw)
+            throw std::runtime_error("Missing key: " + key);
+
+        return *static_cast<const T*>(raw);
+    }
 
     template<typename T>
-    std::optional<T> getOptional(const std::string& key) const;
+    std::optional<T> getOptional(const std::string& key) const
+    {
+        const void* raw = getRaw(key);
+        if (!raw)
+            return std::nullopt;
+
+        return *static_cast<const T*>(raw);
+    }
 
 private:
     std::shared_ptr<const Impl> mImpl;
 
     explicit Config(std::shared_ptr<const Impl> impl);
 
+    // Non-template hooks
+    const void* getRaw(const std::string& key) const;
+
     friend Config loadYaml(const std::string&);
     friend Config loadJson(const std::string&);
-
 };
 
 } // namespace rut::config

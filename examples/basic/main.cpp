@@ -5,5 +5,6 @@
 int main()
 {
     auto cfg = rut::config::Config::fromFile("../test.yaml");
-    auto otr = rut::config::Config::fromFile("../test.json");  
+    int test = cfg.get<int>("Testing.Other");
+    std::cout << test << std::endl; 
 }

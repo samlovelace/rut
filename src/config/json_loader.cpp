@@ -7,11 +7,9 @@ namespace rut::config
 {
     Config loadJson(const std::string& aPath)
     {
-        auto impl = std::make_shared<Config::Impl>(); 
-        impl->message = "json"; 
+        auto impl = std::make_shared<Config::Impl>();  
         
-        Config cfg(impl);
-        std::cout << "Returning JSON impl\n";  
+        Config cfg(impl); 
         return cfg; 
     }
 } // namespace rut::config

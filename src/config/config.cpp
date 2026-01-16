@@ -38,13 +38,13 @@ bool Config::has(const std::string& key) const
     return mImpl->find(key) != nullptr;
 }
 
-template<typename T>
-T Config::get(const std::string& key) const 
+const void* Config::getRaw(const std::string& key) const
 {
-    const auto* value = mImpl->find(key);
-    if (!value)
-        throw std::runtime_error("Missing key: " + key);
-    return std::get<T>(*value);
+    const Value* v = mImpl->find(key);
+    if (!v)
+        return nullptr;
+
+    return (void*)v;
 }
 
 } // namespace rut::config
