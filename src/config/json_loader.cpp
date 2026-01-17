@@ -2,7 +2,7 @@
 #include <fstream>
 #include <iostream>
 
-#include "internal/config_impl.hpp"
+#include "detail/config_impl.hpp"
 #include <nlohmann/json.hpp>
 
 namespace rut::config

@@ -7,6 +7,7 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 
 # find_package for deps here 
 find_package(yaml-cpp REQUIRED)
+find_package(Eigen REQUIRED)
 
 
 add_library(${PROJECT_NAME}
@@ -23,7 +24,7 @@ target_include_directories(${PROJECT_NAME}
         ${CMAKE_CURRENT_SOURCE_DIR}/src
 )
 
-target_link_libraries(${PROJECT_NAME} PUBLIC yaml-cpp)
+target_link_libraries(${PROJECT_NAME} PUBLIC yaml-cpp Eigen3::Eigen)
 
 target_compile_options(${PROJECT_NAME} PRIVATE -Wall -Wextra -Wpedantic)
 

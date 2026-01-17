@@ -2,7 +2,7 @@
 #include <iostream>
 
 #include <rut/config/config.hpp>
-#include "internal/config_impl.hpp"
+#include "detail/config_impl.hpp"
 
 #include <yaml-cpp/yaml.h>
 

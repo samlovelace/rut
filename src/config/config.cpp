@@ -3,8 +3,8 @@
 #include <iostream> 
 
 #include <rut/config/config.hpp>
-#include "internal/config_impl.hpp"
-#include "internal/config_loaders.hpp"
+#include "detail/config_impl.hpp"
+#include "detail/config_loaders.hpp"
 
 namespace rut::config {
 
