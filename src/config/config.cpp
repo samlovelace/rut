@@ -17,14 +17,12 @@ Config::Config(std::shared_ptr<const Impl> impl)
 Config Config::fromFile(const std::string& path) 
 {
     // decide which backend to use
-    if(path.find(".yaml") != std::string::npos)
-    {
-        std::cout << "Loading yaml configuration file\n"; 
+    if(path.find(".yaml") != std::string::npos || path.find(".yml") != std::string::npos)
+    { 
         return loadYaml(path); 
     }
     else if (path.find(".json") != std::string::npos)
     {
-        std::cout << "Loading JSON configuration file\n"; 
         return loadJson(path); 
     }
     else 
@@ -41,6 +39,7 @@ bool Config::has(const std::string& key) const
 const void* Config::getRaw(const std::string& key) const
 {
     const Value* v = mImpl->find(key);
+    
     if (!v)
         return nullptr;
 

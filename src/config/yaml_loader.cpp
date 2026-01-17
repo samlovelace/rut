@@ -60,6 +60,7 @@ namespace rut::config
             {
                 arr.push_back(convert(elem)); 
             }
+            
             v->data = std::move(arr); 
             return v; 
         }

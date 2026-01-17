@@ -1,0 +1,10 @@
+{
+  "person": {
+    "name": "Sarah Connor",
+    "age": 35,
+    "city": "Los Angeles",
+    "hobbies": ["programming", "shooting", "time travel"],
+    "active": true,
+    "scores": [95, 87, 91]
+  }
+}

@@ -21,6 +21,7 @@ using Object   = std::unordered_map<std::string, ValuePtr>;
 struct Value {
     using Variant = std::variant<
         int,
+        uint64_t,
         double,
         bool,
         std::string,
