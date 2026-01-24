@@ -71,7 +71,7 @@ namespace rut::logging
 
         // full log file name 
         std::string logFileName = mImpl->mMainLogDir + "/" + filename + mImpl->mMainLogTimestamp + ".csv"; 
-        mImpl->mBackend->init(filename); 
+        mImpl->mBackend->init(logFileName); 
 
         return true; 
     }
