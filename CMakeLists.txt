@@ -7,13 +7,25 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 
 # find_package for deps here 
 find_package(yaml-cpp REQUIRED)
-find_package(Eigen REQUIRED)
+find_package(Eigen3 REQUIRED)
 
+include(FetchContent)
+
+FetchContent_Declare(
+  plog
+  GIT_REPOSITORY https://github.com/SergiusTheBest/plog.git
+  GIT_TAG        master
+)
+
+FetchContent_MakeAvailable(plog)
 
 add_library(${PROJECT_NAME}
     src/config/config.cpp
     src/config/yaml_loader.cpp
     src/config/json_loader.cpp
+    src/control/pid.cpp
+    src/logging/logger.cpp
+    src/logging/detail/plog_backend.cpp
 )
 
 target_include_directories(${PROJECT_NAME}
@@ -24,7 +36,11 @@ target_include_directories(${PROJECT_NAME}
         ${CMAKE_CURRENT_SOURCE_DIR}/src
 )
 
-target_link_libraries(${PROJECT_NAME} PUBLIC yaml-cpp Eigen3::Eigen)
+target_link_libraries(${PROJECT_NAME}
+    PRIVATE
+        yaml-cpp
+        Eigen3::Eigen
+)
 
 target_compile_options(${PROJECT_NAME} PRIVATE -Wall -Wextra -Wpedantic)
 
